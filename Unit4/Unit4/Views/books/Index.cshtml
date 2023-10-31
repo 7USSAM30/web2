@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Unit4.Models.book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<p>
+    <a asp-action="Search">Search</a>
+</p>
+<p>
+    <a asp-action="Searchall">Searchall</a>
+</p>
+<head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<div id="myCarousel" style="width:30% ; min-width:300px " class="carousel slide mx-auto" data-ride="carousel">
+        <div class="carousel-inner" id="demo"> 
+@{
+    var counter = 0;            
+}
+@foreach (var item in Model)
+{
+           <div class='carousel-item   @(counter == 0 ? "active"  : String.Empty)'   > 
+              <center> <img src="~/images/@item.imgfile" height="150"> </center>
+                <div class='carousel-caption mx-auto'  style='top:45%; left:15%;' >
+                 <h3 style='width:100px' class='mx-auto bg-secondary  text-white'>  @item.price SR  </h3>
+                  <h6 style='width:100px' class='mx-auto bg-light  text-white'>  <a asp-action="Details" asp-route-id="@item.Id">Details</a>  </h6>
+                    
+                </div> 
+            </div> 
+            counter++;
+}
+        </div>
+        <a class="carousel-control-prev " href="#myCarousel" data-slide="prev">
+            <span class="carousel-control-prev-icon bg-secondary"></span> </a>
+        <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+            <span class="carousel-control-next-icon bg-secondary"></span></a>
+ </div>
+ <br />
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        @item.title
+                    </div>
+                    <div class="card-body">
+                        <img src="~/images/@item.imgfile" height="150" />
+                    </div>
+                    <div class="card-footer">
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                        
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

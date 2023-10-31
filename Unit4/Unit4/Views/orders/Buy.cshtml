@@ -1,0 +1,39 @@
+﻿@model Unit4.Models.book
+<dl class="row">
+    <dt class="col-sm-2"> Id </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Id)
+    </dd>
+    <dt class="col-sm-2">title </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.title)
+    </dd>
+    <dt class="col-sm-2"> info</dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.info)
+    </dd>
+    <dt class="col-sm-2">bookquantity</dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.bookquantity)
+    </dd>
+    <dt class="col-sm-2">price </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.price)
+    </dd>
+    <dt> Pic </dt>
+    <dd>
+        <img src="~/images//@Html.DisplayFor(model => model.imgfile)" height="150" />
+        <br />/>@Html.DisplayFor(model => model.imgfile)
+    </dd>
+</dl>
+<p style="color:red"> @ViewData["message"]</p>
+<form asp-action="Create">
+    <input type="hidden" name="bookId" value= =@Html.DisplayFor(model => model.Id) />
+    <div class="form-group">
+        <label for="quantity" class="control-label">Quantity</label>
+        <input name="quantity" class="form-control" />
+
+    </div>
+    <input type="submit" value="Buy" class="btn btn-primary" />
+</form>
+

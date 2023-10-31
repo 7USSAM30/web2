@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "InsertDB";
+}
+
+<h1>InsertDB</h1>
+<form asp-action="insertDB">
+
+    <div class="form-group">
+        <label class="control-label">name</label>
+        <input name="name" class="form-control" />
+    </div>
+
+  
+
+    <div class="form-group">
+        <label class="control-label">UNid</label>
+        <input name="number" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="insert" class="btn btn-default" />
+    </div>
+    <p style="color:green"> @ViewData["message"]</p>
+</form>
+

@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+
+<select>
+    <option value=""> select catagory</option>
+    @foreach (string catagory in ViewBag.Categories)
+    {
+        <option> @catagory</option>
+    }
+</select>

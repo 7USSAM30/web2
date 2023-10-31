@@ -1,0 +1,43 @@
+﻿@model Lab1.customer
+@{ ViewData["Title"] = "registration"; }
+<h1>Registration Form</h1>
+<h2>Customers</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="registration">
+            <div class="form-group">name<input asp-for="name" class="form-control" /></div>
+            <div class="form-group"> age<input asp-for="age" class="form-control" /></div>
+            Education:<select class="form-control" asp-for="education">
+                <option value="HighSchool">Highschool</option>
+                <option value="University">University</option>
+            </select>
+            <div class="form-group">
+                <label asp-for="location" class="control-label"></label>
+                <input asp-for="location" class="form-control" />
+                <span asp-validation-for="location" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label> <input type="radio" asp-for="gender" value="male" /> Male</label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="radio" asp-for="gender" value="female" />Female</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label><input asp-for="married" /> married </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+<h2>@ViewData["Message"]</h2>
+
+
+

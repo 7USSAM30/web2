@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Unit4.Models.book>
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        @item.title
+                    </div>
+                    <div class="card-body">
+                        <img src="~/images/@item.imgfile" height="150"/>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-footer">
+                            <a asp-controller="orders" asp-action="Buy" asp-route-id="@item.Id">Buy</a>
+                        </div>
+                        |
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

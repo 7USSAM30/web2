@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "searchCustomer";
+}
+<h1>searchCustomer</h1>
+<div class="col-md-4">
+    <form asp-action="searchCustomer">
+
+        <div class="form-group">
+            Id<input name="na" class="form-control" onchange="this.form.submit()" />
+        </div>
+    </form>
+
+</div>
+<div>
+    System: 
+    @ViewData["message"]
+</div>
+<div>
+    Name:
+    @ViewData["1"]
+</div>
+<div>
+    age:
+    @ViewData["2"]
+</div>
+<div>
+    education:
+    @ViewData["3"]
+</div>
+<div>
+    married:
+    @ViewData["4"]
+</div>
+<div>
+    gender:
+    @ViewData["5"]
+</div>
+<div>
+    location:
+    @ViewData["6"]
+</div>
+
+
+

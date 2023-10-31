@@ -1,0 +1,45 @@
+﻿@model Unit4.Models.orders
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>orders</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="bookid" class="control-label"></label>
+                <input asp-for="bookid" class="form-control" />
+                <span asp-validation-for="bookid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="custid" class="control-label"></label>
+                <input asp-for="custid" class="form-control" />
+                <span asp-validation-for="custid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="quantity" class="control-label"></label>
+                <input asp-for="quantity" class="form-control" />
+                <span asp-validation-for="quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="buydate" class="control-label"></label>
+                <input asp-for="buydate" class="form-control" />
+                <span asp-validation-for="buydate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

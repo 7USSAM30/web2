@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Lab1.customer>
+@{
+    ViewData["Title"] = "ReadCustomerDB";
+}
+<h1>
+    Customer DB
+</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th> Id </th>
+            <th> Name </th>
+            <th> Age</th>
+            <th>location </th>
+            <th>education</th>
+            <th>married</th>
+            <th>gender</th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.education)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.married)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

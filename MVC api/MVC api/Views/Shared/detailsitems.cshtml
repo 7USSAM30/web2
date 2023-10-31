@@ -1,0 +1,61 @@
+﻿@model MVC_api.Models.items
+
+@{
+    ViewData["Title"] = "Details";
+}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<div class="modal fade" id="detailModel-@Model.Id" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Detail item</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+
+<h1>Details</h1>
+
+<div>
+    <h4>items</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+

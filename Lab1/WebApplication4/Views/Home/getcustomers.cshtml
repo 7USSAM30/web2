@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Lab1.customer>
+@{
+    ViewData["Title"] = "getcustomers";
+}
+<p>
+    <a asp-action="registration">Create New Customer</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th> Name </th>
+            <th> Age</th>
+            <th>
+                @Html.DisplayNameFor(model => model.location)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+               
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a>
+                </td>
+                <td>
+                    <a asp-action="delete" asp-route-id="@item.id">delete</a>
+                </td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+

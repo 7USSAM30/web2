@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome my first app</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    @{
+        int x = 5;
+        for (var i = 0; i < 5; i++)
+        {
+            <p> Line @i</p>
+            
+        }
+
+    }
+    <h1>
+        x = @x   @ViewData["xx"]       @ViewBag.yy
+    </h1>
+    
+</div>
+
