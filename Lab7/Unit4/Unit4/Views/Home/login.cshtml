@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "login";
+}
+
+<h2>login</h2>
+<form asp-action="Login">
+    <div class="form-group">
+        <label class="control-label"> user Name</label>
+        <input name="na" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="pa" class="control-label"> user Password</label>
+        <input name="pa" class="form-control" /> <br />
+    </div>
+    <input type="submit" value="Login" class="btn btn-default" />
+    <p style="color:red"> @ViewData["message"]</p>
+</form>
+

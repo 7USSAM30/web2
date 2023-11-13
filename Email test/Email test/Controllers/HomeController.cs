@@ -33,7 +33,7 @@ namespace Email_test.Controllers
             mail.Body = body;
             SmtpServer.Port = 587;
             SmtpServer.UseDefaultCredentials = false;
-            SmtpServer.Credentials = new System.Net.NetworkCredential("homm9807@gmail.com", "xzyyjkrfqursxvie");
+            SmtpServer.Credentials = new System.Net.NetworkCredential("homm9807@gmail.com", "mydjptatmcmypudn");
             SmtpServer.EnableSsl = true;
             SmtpServer.Send(mail);
             ViewData["Message"] = "Email sent.";

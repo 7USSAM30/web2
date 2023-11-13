@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace Unit4.Models
 {
@@ -11,6 +12,9 @@ namespace Unit4.Models
         public int quantity { get; set; }
         [BindProperty, DataType(DataType.Date)]
         public DateTime buydate { get; set; }
+       
+
     }
+
 
 }

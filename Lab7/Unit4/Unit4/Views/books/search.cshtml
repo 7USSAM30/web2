@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Unit4.Models.book>
+
+@{
+    ViewData["Title"] = "search";
+}
+
+<h1>search</h1>
+
+<form asp-action="Search">
+    <div class="form-group">
+
+        <input name="s" class="form-control" />
+    </div>
+    <input type="submit" value="Search" class="btn btn-default" />
+</form>
+<br /> <p><a asp-action="index">Home</a></p>
+<table class="table animate__animated animate__fadeInDownBig">
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.info)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.pubdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bookquantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.imgfile)
+             </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.info)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pubdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookquantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imgfile)
+            </td>
+              
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+                <dt>
+                    Pic
+                </dt>
+                <dd>
+                    <img src="~/images/@item.imgfile" height="150" />
+                    <br />@item.imgfile
+
+                </dd>
+        </tr>
+}
+    </tbody>
+</table>

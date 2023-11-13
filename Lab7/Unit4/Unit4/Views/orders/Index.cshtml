@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Unit4.Models.orders>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.bookid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.custid)
+               
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.buydate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bookid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.custid)
+                  
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.buydate)
+                </td>
+                <td>
+                    @if ((string)ViewData["role"] == "customer")
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    }
+                    |
+                    @if ((string)ViewData["role"] == "admin")
+                    {
+
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    }
+                    |
+                    @if ((string)ViewData["role"] == "customer")
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

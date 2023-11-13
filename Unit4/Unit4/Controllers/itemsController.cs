@@ -42,6 +42,7 @@ namespace Unit4.Controllers
                           View(await _context.items.ToListAsync()) :
                           Problem("Entity set 'Unit4Context.items'  is null.");
         }
+        
 
         // GET: items/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -82,6 +83,7 @@ namespace Unit4.Controllers
             }
             return View(items);
         }
+
 
         // GET: items/Edit/5
         public async Task<IActionResult> Edit(int? id)

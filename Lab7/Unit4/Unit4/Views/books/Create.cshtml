@@ -1,0 +1,67 @@
+﻿@model Unit4.Models.book
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="title" class="control-label"></label>
+        <input asp-for="title" class="form-control" />
+        <span asp-validation-for="title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="info" class="control-label"></label>
+        <input asp-for="info" class="form-control" />
+        <span asp-validation-for="info" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="price" class="control-label"></label>
+        <input asp-for="price" class="form-control" />
+        <span asp-validation-for="price" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="discount" class="control-label"></label>
+        <div class="checkbox">
+            <label> <input type="radio" asp-for="discount" value="yes" /> Yes</label>
+        </div>
+        <div class="checkbox">
+            <label> <input type="radio" asp-for="discount" value="no" />No</label>
+        </div>
+        <span asp-validation-for="discount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="pubdate" class="control-label"></label>
+        <input asp-for="pubdate" class="form-control" asp-format="{0:dd/MM/yyyy}" />
+        <span asp-validation-for="pubdate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Catagory</label>
+        <select class="form-control" asp-for="category">
+            <option value="0">Please select</option>
+            <option value="1">CS</option>
+            <option value="2">IS</option>
+        </select>
+        <span asp-validation-for="category" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="bookquantity" class="control-label"></label>
+        <input asp-for="bookquantity" class="form-control" />
+        <span asp-validation-for="bookquantity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Pic</label>
+        <input type="file" class="form-control" name="file" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

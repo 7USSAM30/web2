@@ -28,6 +28,12 @@ namespace Unit4.Controllers
                           View(await _context.book.ToListAsync()) :
                           Problem("Entity set 'Unit4Context.book'  is null.");
         }
+        public async Task<IActionResult> Index1()
+        {
+            return _context.book != null ?
+                        View(await _context.book.ToListAsync()) :
+                        Problem("Entity set 'Unit4Context.book'  is null.");
+        }
         public async Task<IActionResult> Catelog()
         {
             return _context.book != null ?
@@ -142,7 +148,7 @@ namespace Unit4.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
 
-            return View(book);
+           
         }
 
 

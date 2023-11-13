@@ -1,0 +1,30 @@
+﻿<form id="warningForm" action="Warning">
+    <p style="color: red">You are not authorized. Please go back.</p>
+</form>
+
+<p>
+    <a id="backLink" href="Login">Back</a>
+</p>
+
+<div id="countdown">Time remaining: 3 seconds</div>
+
+@section scripts{
+    <script>
+        const link = document.getElementById('backLink');
+        const form = document.getElementById('warningForm');
+        const countdown = document.getElementById('countdown');
+
+        let timeLeft = 3; 
+        countdown.innerText = `Time remaining: ${timeLeft} seconds`;
+
+        const countdownInterval = setInterval(() => {
+            timeLeft--;
+            countdown.innerText = `Time remaining: ${timeLeft} seconds`;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = link.getAttribute('href');
+            }
+        }, 1000); 
+    </script>
+}

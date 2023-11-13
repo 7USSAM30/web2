@@ -1,4 +1,4 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,7 +24,7 @@ namespace Unit4.Controllers
         public async Task<IActionResult> Index()
         {
             ViewData["role"] = HttpContext.Session.GetString("Role");
-            return _context.orders != null ? 
+            return _context.orders != null ?
                           View(await _context.orders.ToListAsync()) :
                           Problem("Entity set 'Unit4Context.orders'  is null.");
         }
@@ -50,12 +50,15 @@ namespace Unit4.Controllers
         // GET: orders/Buy
         public async Task<IActionResult> Buy(int? id)
         {
-            var book = await _context.book.FindAsync(id);
-                string ss = HttpContext.Session.GetString("Role");
-                if (ss == "customer")
-                    return View();
-                else
-                    return RedirectToAction("login", "Home");
+            string ss = HttpContext.Session.GetString("Role");
+
+            if (ss == "customer")
+            {
+                var book = await _context.book.FindAsync(id);
+                return View(book);
+            }
+            else
+                return RedirectToAction("Warning", "Home");
         }
 
         [HttpPost]
@@ -205,14 +208,14 @@ namespace Unit4.Controllers
             {
                 _context.orders.Remove(orders);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ordersExists(int id)
         {
-          return (_context.orders?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.orders?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
