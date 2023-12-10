@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+}
+
+
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-image: url("../../wwwroot/images2/7up.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+
+<div class="form-container mt-5">
+    <h1>login</h1>
+    <form asp-action="Login">
+        <div class="form-group">
+            <label class="control-label"> user Name</label>
+            <input name="na" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="pa" class="control-label"> user Password</label>
+            <input name="pa" class="form-control" /> <br />
+        </div>
+        <input type="submit" value="Login" class="btn btn-default" />
+        <p style="color:red"> @ViewData["message"]</p>
+
+        <label>Not registered?</label>
+        <a asp-action="Create">create account</a>
+
+    </form>
+
+
+</div>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Projects.Models.book>
+@{
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome to Our Bookstore</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+
+            header {
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 1em 0;
+            }
+
+            section {
+                padding: 2em;
+                text-align: center;
+            }
+
+            footer {
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                padding: 1em 0;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+
+            section img {
+                width: 150px; /* Set the desired width for the images */
+                opacity: 1; /* 100% opacity */
+            }
+        </style>
+    </head>
+
+
+        <header>
+    <h1>Welcome to Our Bookstore @ViewData["customer"]</h1>
+            <p>Discover a World of Books</p>
+        </header>
+        
+    <div class="container-fluid">
+        <br />
+        <div class="row" >
+        <p class="text-lg-center">Our discount items</p>
+            @foreach(var item in Model)
+            {
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            @item.name
+                        </div>
+                        
+                        <div class="card-body">
+                            <img src="~/images/@item.imgfile" height="150" />
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-footer">
+
+                                @Html.DisplayNameFor(model => model.quantity): @item.quantity
+                                <br />
+
+                            <a asp-controller="usersaccounts" asp-action="Detailsitems" asp-route-id="@item.Id">Details</a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+            }
+        </div>
+        </div>
+
+
+    
+

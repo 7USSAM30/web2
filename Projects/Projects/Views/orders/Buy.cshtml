@@ -1,0 +1,88 @@
+﻿@model Projects.Models.book
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@{
+    ViewData["Title"] = "Buy";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+<div class="position-absolute top-50 start-50 translate-middle">
+    <img src="~/images2/7up.jpg" width="" style="opacity:100%" />
+</div>
+<h1>Buy</h1>
+
+<div>
+    <h4>book</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.descr)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.descr)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.discount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.discount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.category)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.imgfile)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="~/images/@Model.imgfile" height="150" />
+            <br />
+        </dd>
+    </dl>
+</div>
+<p style="color:red"> @ViewData["message"]</p>
+<form asp-action="Buy">
+    <input type="hidden" name="bookId" value=@Model.Id />
+    <div class="form-group">
+        <label for="quantity" class="control-label">Quantity</label>
+        <input name="quantity" class="form-control" id="qu" onchange="gettotal()" />
+
+    </div>
+    <input type="submit" value="Buy" class="btn btn-primary" />
+    <div id="message"></div>
+</form>
+@section scripts{
+    <script>
+        function gettotal() {
+            tot = 0;
+
+            var q = document.getElementById('qu').value;
+            var pr = '@Model.price';
+            tot = q * pr;
+            if ('@Model.discount' == "yes") {
+                tot = (tot * 90) / 100
+            }
+            Swal.fire({ icon: 'success', title: "total  =" + tot, showConfirmButton: false, timer: 2500 })
+        }
+    </script>
+}
+<a asp-controller="usersaccounts" asp-action="customer">Back to Home</a>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Projects.Models.orders>
+
+@{
+    ViewData["Title"] = "customerOrders";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>customerOrders</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.bookId)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.buydate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.bookId)
+            </td>
+         
+            <td>
+                    @Html.DisplayFor(modelItem => item.buydate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+        
+        </tr>
+}
+    </tbody>
+</table>
