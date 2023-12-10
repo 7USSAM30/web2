@@ -27,6 +27,12 @@ namespace Projects.Controllers
                           View(await _context.book.ToListAsync()) :
                           Problem("Entity set 'ProjectsContext.book'  is null.");
         }
+        public async Task<IActionResult> list()
+        {
+            return _context.book != null ?
+                        View(await _context.book.OrderBy(m =>m.category).ToListAsync()) :
+                        Problem("Entity set 'ProjectsContext.book'  is null.");
+        }
 
         public async Task<IActionResult> itemSlider()
         {

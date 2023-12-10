@@ -14,7 +14,11 @@
 
 <h1>Book List</h1>
 
-@await Html.PartialAsync("insertitem",new book())
+<p>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#insertModal"> New Item</button>
+    @await Html.PartialAsync("insertitem",new book())
+</p>
 
 <table class="table">
     <thead>
@@ -22,24 +26,17 @@
             <th>
                 @Html.DisplayNameFor(model => model.name)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.descr)
-            </th>
+           
             <th>
                 @Html.DisplayNameFor(model => model.price)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.discount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.category)
-            </th>
+          
+          
+            
             <th>
                 @Html.DisplayNameFor(model => model.imgfile)
             </th>
+            <th>Actions</th>
             <th></th>
         </tr>
     </thead>
@@ -49,21 +46,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.name)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descr)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.price)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.discount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.category)
-            </td>
+            
+          
                 <td>
 
 
@@ -75,9 +63,13 @@
 
                 </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="@("#editModal-" + @item.Id)">edit</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="@("#deleteModal-" + @item.Id)">Delete</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="@("#detailModal-" + @item.Id)">Detail</button>
+                    @await Html.PartialAsync("editbook",item)
+                    @await Html.PartialAsync("detailsbook",item)
+                    @await Html.PartialAsync("deletebook",item)
+
             </td>
         </tr>
 }

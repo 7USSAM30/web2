@@ -74,20 +74,21 @@ namespace Projects.Controllers
                 return RedirectToAction(nameof(myorders));
             }
         }
-
         public async Task<IActionResult> ordersdetail(int? id)
         {
-            var orItems = await _context.orderdetail
-                .FromSqlRaw("SELECT usersaccounts.id, usersaccounts.name AS username, orders.buydate AS BuyDate, " +
-                            "book.price * orders.quantity AS totalprice, orders.quantity AS quantity " +
-                            "FROM orders " +
-                            "JOIN usersaccounts ON orders.userid = usersaccounts.id " +
-                            "JOIN book ON orders.bookid = book.id " +
-                            "WHERE orders.userid = {0}", id)
-                .ToListAsync();
+            var orItems = await _context.ordersdetail
+                .FromSqlRaw(@"SELECT usersaccounts.id, usersaccounts.name AS username, orders.buydate AS BuyDate,
+                 book.price * orders.quantity AS TotalPrice, orders.quantity AS quantity FROM orders
+                 INNER JOIN usersaccounts ON orders.userid = usersaccounts.id
+                 INNER JOIN book ON orders.bookid = book.id
+                 WHERE orders.userid = {0}", id).ToListAsync();
+
+            // Process the results as needed
+            // ...
 
             return View(orItems);
         }
+
 
 
 

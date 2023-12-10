@@ -19,7 +19,7 @@ namespace Projects.Data
 
         public DbSet<Projects.Models.orders>? orders { get; set; }
 
-        public DbSet<Projects.Models.orderdetail> orderdetail { get; set; }
+        public DbSet<Projects.Models.orderdetail> ordersdetail { get; set; }
 
         public DbSet<Projects.Models.report>? report { get; set; }
 
