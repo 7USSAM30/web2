@@ -42,13 +42,35 @@ namespace Projects.Controllers
                         View(await _context.book.ToListAsync()) :
                         Problem("Entity set 'ProjectsContext.book'  is null.");
         }
+        public async Task<IActionResult> statis()
+        {
+            {
+                string sql = "";
 
-    
+                var builder = WebApplication.CreateBuilder();
+                string conStr = builder.Configuration.GetConnectionString("ProjectsContext");
+                SqlConnection conn = new SqlConnection(conStr);
+
+                SqlCommand comm;
+                conn.Open();
+                sql = "SELECT COUNT(Id)  FROM book where category =1";
+                comm = new SqlCommand(sql, conn);
+                ViewData["d1"] = (int)comm.ExecuteScalar();
+
+                sql = "SELECT COUNT( Id)  FROM book where category =2";
+                comm = new SqlCommand(sql, conn);
+                ViewData["d2"] = (int)comm.ExecuteScalar();
+                return View();
+            }
+        }
 
 
 
-    // GET: book/Details/5
-    public async Task<IActionResult> Details(int? id)
+
+
+
+        // GET: book/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.book == null)
             {

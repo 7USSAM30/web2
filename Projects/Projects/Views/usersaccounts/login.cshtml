@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
     Layout = null;
 }
 
@@ -26,21 +26,22 @@
 </head>
 
 <div class="form-container mt-5">
-    <h1>login</h1>
+    <h1>تسجيل الدخول</h1>
     <form asp-action="Login">
         <div class="form-group">
-            <label class="control-label"> user Name</label>
+            <label class="control-label"> اسم المستخدم</label>
             <input name="na" class="form-control" />
         </div>
         <div class="form-group">
-            <label for="pa" class="control-label"> user Password</label>
+            <label for="pa" class="control-label"> كلمة المرور</label>
             <input name="pa" class="form-control" /> <br />
         </div>
         <input type="submit" value="Login" class="btn btn-default" />
         <p style="color:red"> @ViewData["message"]</p>
 
-        <label>Not registered?</label>
-        <a asp-action="Create">create account</a>
+        <label>ماعندك حساب؟</label>
+        </br>
+        <a asp-action="Create"> سجل</a>
 
     </form>
 
