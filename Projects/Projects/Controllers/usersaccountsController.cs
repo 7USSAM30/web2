@@ -28,6 +28,16 @@ namespace Projects.Controllers
                           View(await _context.usersaccounts.ToListAsync()) :
                           Problem("Entity set 'ProjectsContext.useraccounts'  is null.");
         }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("Name"); // Replace "Name" with the actual session key
+            HttpContext.Session.Remove("Role"); // Replace "Role" with the actual session key
+
+            HttpContext.Response.Cookies.Delete("Name"); // Replace "Name" with the actual cookie name
+            HttpContext.Response.Cookies.Delete("Role"); // Replace "Role" with the actual cookie name
+
+            return RedirectToAction(nameof(Login));
+        }
         public async Task<IActionResult> email(int? id)
         {
 
@@ -124,16 +134,30 @@ namespace Projects.Controllers
 
         public IActionResult login()
         {
-            return View();
+            if (!HttpContext.Request.Cookies.ContainsKey("Name"))
+
+                return View();
+            else
+            {
+                string na = HttpContext.Request.Cookies["Name"].ToString();
+                string ro = HttpContext.Request.Cookies["Role"].ToString();
+                HttpContext.Session.SetString("Name", na);
+                HttpContext.Session.SetString("Role", ro);
+
+                if (ro == "admin")
+                {
+                    return RedirectToAction(nameof(admin));
+
+                }
+                return RedirectToAction(nameof(customer));
+            }
+        
         }
 
         [HttpPost, ActionName("login")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> login(string na, string pa)
+        public async Task<IActionResult> Login(string na, string pa, string auto)
         {
-            var builder = WebApplication.CreateBuilder();
-            string conStr = builder.Configuration.GetConnectionString("projectsContext");
-            SqlConnection conn1 = new SqlConnection(conStr);
+            SqlConnection conn1 = new SqlConnection("Data Source =.\\sqlexpress; Initial Catalog = final; Integrated Security = True; Pooling = False");
             string sql;
             sql = "SELECT * FROM usersaccounts where name ='" + na + "' and  pass ='" + pa + "' ";
             SqlCommand comm = new SqlCommand(sql, conn1);
@@ -142,27 +166,35 @@ namespace Projects.Controllers
 
             if (reader.Read())
             {
-                string id = Convert.ToString((int)reader["Id"]);
                 string na1 = (string)reader["name"];
                 string ro = (string)reader["role"];
-                HttpContext.Session.SetString("userid", id);
                 HttpContext.Session.SetString("Name", na1);
                 HttpContext.Session.SetString("Role", ro);
                 reader.Close();
                 conn1.Close();
+
+                if (auto == "on")
+                {
+                    HttpContext.Response.Cookies.Append("Name", na1);
+                    HttpContext.Response.Cookies.Append("Role", ro);
+                }
+
                 if (ro == "admin")
                 {
                     return RedirectToAction(nameof(admin));
-
                 }
+
                 return RedirectToAction(nameof(customer));
             }
             else
             {
-                ViewData["Message"] = "wrong user name password";
+                ViewData["Message"] = "Wrong username or password";
                 return View();
             }
         }
+
+
+
 
 
         public async Task<IActionResult> admin(int? id)
