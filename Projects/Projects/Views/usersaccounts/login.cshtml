@@ -8,48 +8,31 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <style>
-        body {
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-
-        .form-container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff; /* Set your desired background color */
-            margin-top: 50px;
-        }
-    </style>
+    <link rel="stylesheet" href="~/css/style.css" />
 </head>
 <body>
     <div class="container">
         <div class="form-container">
-            <h1>تسجيل الدخول</h1>
+            <h1>Login</h1>
             <form asp-action="Login" method="post">
                 <div class="form-group">
-                    <label class="control-label">اسم المستخدم</label>
+                    <label class="control-label">User Name: </label>
                     <input name="na" class="form-control" />
                 </div>
                 <div class="form-group">
-                    <label for="pa" class="control-label">كلمة المرور</label>
+                    <label for="pa" class="control-label">Password:</label>
                     <input name="pa" class="form-control" />
                 </div>
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" name="auto" id="auto" />
-                    <label class="form-check-label" for="auto">تذكرني</label>
+                    <label class="form-check-label" for="auto">Rembare ME</label>
                 </div>
-                <button type="submit" class="btn btn-primary">تسجيل الدخول</button>
+                <button type="submit" class="btn btn-primary">Login</button>
                 <p style="color:red">@ViewData["Message"]</p>
 
-                <label>ماعندك حساب؟</label>
+                <label>No Account?</label>
                 <br />
-                <a asp-action="Create">سجل</a>
+                <a asp-action="Create">Regisiter</a>
             </form>
         </div>
     </div>

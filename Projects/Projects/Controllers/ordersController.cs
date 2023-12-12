@@ -83,9 +83,6 @@ namespace Projects.Controllers
                  INNER JOIN book ON orders.bookid = book.id
                  WHERE orders.userid = {0}", id).ToListAsync();
 
-            // Process the results as needed
-            // ...
-
             return View(orItems);
         }
 

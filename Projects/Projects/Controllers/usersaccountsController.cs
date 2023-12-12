@@ -30,11 +30,11 @@ namespace Projects.Controllers
         }
         public IActionResult Logout()
         {
-            HttpContext.Session.Remove("Name"); // Replace "Name" with the actual session key
-            HttpContext.Session.Remove("Role"); // Replace "Role" with the actual session key
+            HttpContext.Session.Remove("Name"); 
+            HttpContext.Session.Remove("Role"); 
 
-            HttpContext.Response.Cookies.Delete("Name"); // Replace "Name" with the actual cookie name
-            HttpContext.Response.Cookies.Delete("Role"); // Replace "Role" with the actual cookie name
+            HttpContext.Response.Cookies.Delete("Name"); 
+            HttpContext.Response.Cookies.Delete("Role");
 
             return RedirectToAction(nameof(Login));
         }
