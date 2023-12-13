@@ -19,7 +19,6 @@
         }
 
         body {
-            background-image: <<url(../../wwwroot/images2/7up.jpg)>>;
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -30,20 +29,21 @@
 <body>
 
 
-
     <div class="form-container">
         <form asp-action="email" method="post">
+            <h1>Send Email</h1>
+
             <div class="form-group">
                 <label for="address" class="control-label">Address</label>
                 <input id="address" name="address" class="form-control" />
             </div>
             <div class="form-group">
-                <label for="body" class="control-label">Body</label>
-                <input id="body" name="body" class="form-control" />
+                <label for="body" class="control-label">subject</label>
+                <input id="body" name="subject" class="form-control" />
             </div>
             <div class="form-group">
-                <label for="subject" class="control-label">Subject</label>
-                <textarea id="subject" name="subject" rows="4" cols="50"></textarea>
+                <label for="subject" class="control-label">Body</label>
+                <textarea id="subject" name="body" rows="4" cols="50"></textarea>
             </div>
             <input type="submit" value="Send" class="btn btn-default" />
         </form>

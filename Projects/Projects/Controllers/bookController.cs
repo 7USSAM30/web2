@@ -27,6 +27,13 @@ namespace Projects.Controllers
                           View(await _context.book.ToListAsync()) :
                           Problem("Entity set 'ProjectsContext.book'  is null.");
         }
+
+        public async Task<IActionResult> bookIndex()
+        {
+            return _context.book != null ?
+                        View(await _context.book.ToListAsync()) :
+                        Problem("Entity set 'ProjectsContext.book'  is null.");
+        }
         public async Task<IActionResult> list()
         {
             return _context.book != null ?
@@ -60,6 +67,10 @@ namespace Projects.Controllers
                 sql = "SELECT COUNT( Id)  FROM book where category =2";
                 comm = new SqlCommand(sql, conn);
                 ViewData["d2"] = (int)comm.ExecuteScalar();
+
+                sql = "SELECT COUNT( Id)  FROM book";
+                comm = new SqlCommand(sql, conn);
+                ViewData["d3"] = (int)comm.ExecuteScalar();
                 return View();
             }
         }

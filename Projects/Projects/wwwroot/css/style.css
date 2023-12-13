@@ -12,7 +12,22 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: gray;
+    background-color: white;
     margin-top: 50px;
+}
+#login-page {
+    background-position: center;
+    background-image: url("../images/banner.jpg");
+    background-size: cover;
+}
+
+.login-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+    border-radius: 5px;
+    color: #fff;
 }
 

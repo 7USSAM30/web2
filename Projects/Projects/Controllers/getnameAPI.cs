@@ -14,7 +14,6 @@ namespace Projects.Controllers
         public IEnumerable<usersaccounts> role(string role)
         {
             List<usersaccounts> li = new List<usersaccounts>();
-            //  SqlConnection conn1 = new SqlConnection("Data Source=.\\sqlexpress;Initial Catalog=mynewdb;Integrated Security=True;Pooling=False");
             var builder = WebApplication.CreateBuilder();
             string conStr = builder.Configuration.GetConnectionString("projectsContext");
             SqlConnection conn1 = new SqlConnection(conStr);
