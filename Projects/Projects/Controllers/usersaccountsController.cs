@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
@@ -168,8 +169,11 @@ namespace Projects.Controllers
             {
                 string na1 = (string)reader["name"];
                 string ro = (string)reader["role"];
+                int userid = (int)reader["id"];
                 HttpContext.Session.SetString("Name", na1);
                 HttpContext.Session.SetString("Role", ro);
+                HttpContext.Session.SetString("userid", userid+"");
+
                 reader.Close();
                 conn1.Close();
 

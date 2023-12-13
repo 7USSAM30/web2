@@ -74,14 +74,16 @@ namespace Projects.Controllers
                 return RedirectToAction(nameof(myorders));
             }
         }
+
+
         public async Task<IActionResult> ordersdetail(int? id)
         {
             var orItems = await _context.ordersdetail
-                .FromSqlRaw(@"SELECT usersaccounts.id, usersaccounts.name AS username, orders.buydate AS BuyDate,
-                 book.price * orders.quantity AS TotalPrice, orders.quantity AS quantity FROM orders
-                 INNER JOIN usersaccounts ON orders.userid = usersaccounts.id
-                 INNER JOIN book ON orders.bookid = book.id
-                 WHERE orders.userid = {0}", id).ToListAsync();
+       .FromSqlRaw($"select (CASE WHEN book.discount = 'yes' THEN CAST(orders.quantity * (book.price * 0.9) AS INT) ELSE orders.quantity * book.price END) AS totalprice, " +
+                   "orders.id, orders.bookid, orders.Buydate, orders.quantity, orders.userid, usersaccounts.name AS username " +
+                   $"from orders, book, usersaccounts where orders.userid='{id}' and book.id=orders.bookid and usersaccounts.id={id}")
+       .ToListAsync();
+
 
             return View(orItems);
         }
@@ -92,18 +94,21 @@ namespace Projects.Controllers
         public async Task<IActionResult> myorders()
 
         {
+            int id = Convert.ToInt32(HttpContext.Session.GetString("userid"));
+            var orItems = await _context.ordersdetail
+                   .FromSqlRaw($"select (CASE WHEN book.discount = 'yes' THEN CAST(orders.quantity * (book.price * 0.9) AS INT) ELSE orders.quantity * book.price END) AS totalprice, " +
+                               "orders.id, orders.bookid, orders.Buydate, orders.quantity, orders.userid, book.name AS username " +
+                               $"from orders, book, usersaccounts where orders.userid='{id}' and book.id=orders.bookid and usersaccounts.id={id}")
+                   .ToListAsync();
 
-
-            int userid = Convert.ToInt32(HttpContext.Session.GetString("userid"));
-
-            var orItems = await _context.orders.FromSqlRaw("select *  from orders where  userid = '" + userid + "'  ").ToListAsync();
 
             return View(orItems);
 
 
         }
 
-    
+
+
 
 
         public async Task<IActionResult> customerOrders(int? id)
@@ -113,9 +118,11 @@ namespace Projects.Controllers
             var orItems = await _context.orders.FromSqlRaw("select *  from orders where  userid = '" + id + "'  ").ToListAsync();
 
             return View(orItems);
-            
+
 
         }
+
+
         public async Task<IActionResult> customerreport()
          {
           var orItems = await _context.report

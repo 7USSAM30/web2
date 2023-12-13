@@ -1,25 +1,27 @@
-﻿@model IEnumerable<Projects.Models.orders>
+﻿@model IEnumerable<Projects.Models.orderdetail>
 
 @{
     ViewData["Title"] = "myorders";
     Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
 }
 
-<h1>myorders</h1>
+<h1>My Purchase</h1>
 
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.bookId)
+                @Html.DisplayNameFor(model => model.username)
             </th>
-           
             <th>
-                @Html.DisplayNameFor(model => model.buydate)
+                @Html.DisplayNameFor(model => model.totalprice)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.buydate)
             </th>
             <th></th>
         </tr>
@@ -28,20 +30,18 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.bookId)
+                @Html.DisplayFor(modelItem => item.username)
             </td>
-          
             <td>
-                @Html.DisplayFor(modelItem => item.buydate)
+                @Html.DisplayFor(modelItem => item.totalprice)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.quantity)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.DisplayFor(modelItem => item.buydate)
             </td>
+           
         </tr>
 }
     </tbody>
