@@ -49,6 +49,7 @@ namespace Projects.Controllers
                         View(await _context.book.ToListAsync()) :
                         Problem("Entity set 'ProjectsContext.book'  is null.");
         }
+
         public async Task<IActionResult> statis()
         {
             {

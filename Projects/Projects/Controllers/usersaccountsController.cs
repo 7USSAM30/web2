@@ -29,6 +29,7 @@ namespace Projects.Controllers
                           View(await _context.usersaccounts.ToListAsync()) :
                           Problem("Entity set 'ProjectsContext.useraccounts'  is null.");
         }
+
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("Name"); 
@@ -39,6 +40,7 @@ namespace Projects.Controllers
 
             return RedirectToAction(nameof(Login));
         }
+
         public async Task<IActionResult> email(int? id)
         {
 
