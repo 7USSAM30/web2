@@ -1,0 +1,27 @@
+﻿@model IEnumerable<project.Models.item>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";  
+}
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var item in Model.Where(item => item.discount == "yes"))
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        @item.name
+                    </div>
+                    <div class="card-body">
+                        <img src="~/images/@item.imagefilename" height="150" />
+                    </div>
+                    <div class="card-footer">
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

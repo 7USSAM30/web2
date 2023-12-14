@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "statis";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>DashBord</h1>
+<head>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Category');
+      data.addColumn('number', 'Books');
+      data.addRows([
+                ['CS', @ViewData["d1"]],
+                ['IS', @ViewData["d2"]]
+                
+      ]);
+      var options = {'title':'Number of Books',
+                     'width':400,
+                     'height':300};
+      var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+</script>
+</head>
+<body>
+    <div id="chart_div"></div>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class='card'>
+                <div class='card-header bg-warning text-center'>Computer Science</div>
+                <div class='card-body'><img src='~/images/computer-science.jpg' ; width='150px'></div>
+                <div class='card-footer'>
+                    Number of Books <div> @ViewData["d1"] </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class='card'>
+                <div class='card-header bg-warning text-center'>Information Systems</div>
+                <div class='card-body'><img src='~/images/Information-System.jpg' ; width='220px'></div>
+                <div class='card-footer'>
+                    Number of Books <div>@ViewData["d2"] </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class='card'>
+                <div class='card-header bg-warning text-center'>Total Books</div>
+                <div class='card-body'><img src='~/images/total2.png' ; width='220px'></div>
+                <div class='card-footer'>
+                    Number of Books <div> @ViewData["d3"] </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+

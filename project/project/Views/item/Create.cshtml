@@ -1,0 +1,74 @@
+﻿@model project.Models.Items
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Items</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="descr" class="control-label"></label>
+                <input asp-for="descr" class="form-control" />
+                <span asp-validation-for="descr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="quantity" class="control-label"></label>
+                <input asp-for="quantity" class="form-control" />
+                <span asp-validation-for="quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="discount" class="control-label"></label>
+                <div class="checkbox">
+                    <label> <input type="radio" asp-for="discount" value="yes" /> Yes</label>
+                </div>
+                <div class="checkbox">
+                    <label> <input type="radio" asp-for="discount" value="no" />No</label>
+                </div>
+                <span asp-validation-for="discount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Catagory</label>
+                <select class="form-control" asp-for="category">
+                    <option value="0">Please select</option>
+                    <option value="1">Toyota</option>
+                    <option value="2">Hyundia</option>
+                </select>
+                <span asp-validation-for="category" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label class="control-label">Picture</label>
+                <input type="file" class="form-control" name="file" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Projects.Models.book>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<h1>Book List</h1>
+
+<p>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#insertModal"> New Item</button>
+    @await Html.PartialAsync("insertitem",new book())
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+          
+          
+            
+            <th>
+                @Html.DisplayNameFor(model => model.imgfile)
+            </th>
+            <th>Actions</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            
+          
+                <td>
+
+
+
+                    <dd class="col-sm-10">
+                        <img src="~/images/@item.imgfile" width="70" height="100" />
+
+                    </dd>
+
+                </td>
+            <td>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="@("#editModal-" + @item.Id)">edit</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="@("#deleteModal-" + @item.Id)">Delete</button>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="@("#detailModal-" + @item.Id)">Detail</button>
+                    @await Html.PartialAsync("editbook",item)
+                    @await Html.PartialAsync("detailsbook",item)
+                    @await Html.PartialAsync("deletebook",item)
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

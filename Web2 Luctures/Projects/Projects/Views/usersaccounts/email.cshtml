@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "email";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+
+</head>
+<body>
+
+
+    <div class="form-container">
+        <form asp-action="email" method="post">
+            <h1>Send Email</h1>
+
+            <div class="form-group">
+                <label for="address" class="control-label">Address</label>
+                <input id="address" name="address" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="body" class="control-label">subject</label>
+                <input id="body" name="subject" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="subject" class="control-label">Body</label>
+                <textarea id="subject" name="body" rows="4" cols="50"></textarea>
+            </div>
+            <input type="submit" value="Send" class="btn btn-default" />
+        </form>
+
+        <p>@ViewData["message"]</p>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+
+<body id="login-page">
+    <div class="container">
+        <div class="form-container" style="background: rgba(0, 0, 0, 0.5);">
+            <h1>Login</h1>
+            <form asp-action="Login" method="post">
+                <div class="form-group">
+                    <label class="control-label">User Name: </label>
+                    <input name="na" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="pa" class="control-label">Password:</label>
+                    <input name="pa" class="form-control" />
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" name="auto" id="auto" />
+                    <label class="form-check-label" for="auto">Rembare ME</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <p style="color:red">@ViewData["Message"]</p>
+
+                <label>No Account?</label>
+                <br />
+                <a asp-action="Create">Regisiter</a>
+            </form>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
